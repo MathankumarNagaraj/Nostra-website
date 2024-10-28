@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Gallery</h1>
+    <div id="product-container"></div>
+
+    <script type="module">
+        import { products } from './products.js'; // Adjust path as necessary
+
+        const container = document.getElementById('product-container');
+
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+
+            productDiv.innerHTML = `
+                <img src="${product.src}" alt="${product.name}">
+                <h2>${product.name}</h2>
+                <p>Price: $${product.price}</p>
+                <p>Tags: ${product.tags.join(', ')}</p>
+            `;
+
+            container.appendChild(productDiv);
+        });
+    </script>
+
+</body>
+</html>
